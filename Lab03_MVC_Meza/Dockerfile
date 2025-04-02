@@ -1,25 +1,30 @@
-# Usa la imagen oficial de .NET SDK
+# Imagen base con el SDK de .NET
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
+# Configurar directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos del proyecto y restaurar dependencias
-COPY ["Lab03_MVC_Meza/Lab03_MVC_Meza.csproj", "./"]
+# Copiar los archivos del proyecto y restaurar dependencias
+COPY . . 
 RUN dotnet restore
 
-# Copiar el resto del código fuente
-COPY . .
-
-# Construir la aplicación
+# Construir el proyecto
 RUN dotnet build -c Release --no-restore
 
 # Publicar la aplicación
-RUN dotnet publish -c Release -o /app/publish --no-build
+RUN dotnet publish -c Release -o /app/publish --no-restore
 
-# Usar una imagen más liviana para la ejecución
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+# Imagen final con solo el runtime de .NET
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+
+# Configurar directorio de trabajo
 WORKDIR /app
+
+# Copiar archivos publicados desde la etapa de compilación
 COPY --from=build /app/publish .
 
-# Definir el comando de inicio
+# Exponer el puerto (ajustar según tu configuración)
+EXPOSE 80
+
+# Comando para ejecutar la aplicación
 ENTRYPOINT ["dotnet", "Lab03_MVC_Meza.dll"]
