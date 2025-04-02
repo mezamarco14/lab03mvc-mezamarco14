@@ -1,0 +1,35 @@
+﻿
+@model Lab03_MVC_Meza.Models.ClsDispensador
+@{
+    ViewBag.Title = "Generar";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">Dispensador de Billetes</div>
+        <div class="card-body">
+            <label class="text-danger">Monto: S/. @Model.Monto </label><br />
+
+            <label>Billetes</label><br />
+            <label class="text-secondary">S/. 200 → @Model.b200 billetes</label><br />
+            <label class="text-secondary">S/. 100 → @Model.b100 billetes</label><br />
+            <label class="text-secondary">S/. 50 → @Model.b50 billetes</label><br />
+            <label class="text-secondary">S/. 20 → @Model.b20 billetes</label><br />
+            <label class="text-secondary">S/. 10 → @Model.b10 billetes</label><br />
+            <br />
+            <label class="text-danger">Total: @Model.CantidadBi Billetes</label><br />
+
+            <label>Monedas</label><br />
+            <label class="text-secondary">S/. 5 → @Model.m5 monedas</label><br />
+            <label class="text-secondary">S/. 2 → @Model.m2 monedas</label><br />
+            <label class="text-secondary">S/. 1 → @Model.m1 monedas</label><br />
+            <label class="text-secondary">S/. 0.50 → @Model.m050 monedas</label><br />
+            <label class="text-secondary">S/. 0.20 → @Model.m020 monedas</label><br />
+            <label class="text-secondary">S/. 0.10 → @Model.m010 monedas</label><br />
+            <label class="text-secondary">S/. 0.05 → @Model.m005 monedas</label><br />
+
+            <label class="text-danger">Total: @Model.CantidadMo Monedas</label><br />
+        </div>
+    </div>
+    <a href="Index"> << Retornar al Formulario </a>
+</div>

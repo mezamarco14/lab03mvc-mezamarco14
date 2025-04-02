@@ -1,0 +1,36 @@
+﻿@model Lab03_MVC_Meza.Models.ClsCompra
+@{
+    ViewBag.Title = "CalcularCompra";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">Compra Aleatoria</div>
+        <div class="card-body">
+            @if (Model.ramdon < 100)
+            {
+                Model.total = Model.monto - (Model.monto * 0.20);
+                Model.descuento = (Model.monto * 0.20);
+            }
+            else if (Model.ramdon >= 100)
+            {
+                Model.total = Model.monto - (Model.monto * 0.40);
+                Model.descuento = (Model.monto * 0.40);
+            }
+            <br />
+            <label class="text-danger">Valor Aleatorio:</label>
+            @Model.ramdon<br /><br />
+
+            <label class="text-danger">Monto Total:</label>
+            @Model.monto<br /><br />
+
+            <label class="text-danger">Descuento:</label>
+            @Model.descuento<br /><br />
+
+            <label class="text-success">Total a Pagar:</label>
+            @Model.total<br /><br />
+        </div>
+    </div>
+    <a href="Index"> << Retornar al Formulario </a>
+
+</div>

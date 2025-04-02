@@ -1,0 +1,22 @@
+﻿@model Lab03_MVC_Meza.Models.ClsDispensador
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <center>
+        <h1>Dispensador de Billetes</h1>
+        <br />
+        @using (Html.BeginForm("Generar", "Dispensador", FormMethod.Post))
+        {
+            <p>
+                @Html.LabelFor(model => model.Monto, "Ingrese el Monto de Compra: ")
+                @Html.EditorFor(model => model.Monto)<br />
+                @Html.ValidationMessageFor(model=>model.Monto,"Debe Ingresar un valor")
+                <br />
+            </p>
+            <input type="submit" value="Calcular" class="btn btn-warning" />
+        }
+    </center>
+</div>
+

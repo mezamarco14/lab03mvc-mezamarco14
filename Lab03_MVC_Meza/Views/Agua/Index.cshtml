@@ -1,0 +1,30 @@
+﻿@model Lab03_MVC_Meza.Models.ClsAgua
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @using (Html.BeginForm("Index", "Agua", FormMethod.Post))
+            {
+                @Html.LabelFor(m => Model.litros)
+
+                @Html.TextBoxFor(m => Model.litros,new{@type="number" })
+                
+                <input type="submit" name="calcular" value="Calcular" class="btn btn-success"/>
+            }
+        </div>
+        <div class="row">
+            <div class="col">
+                @if(ViewBag.Cuota != null)
+            {
+                @Html.Label("Cuota")
+                <p class="text-danger">S/.@ViewBag.Cuota</p>
+            }
+            </div>
+        </div>
+    </div>
+
+</div>
+

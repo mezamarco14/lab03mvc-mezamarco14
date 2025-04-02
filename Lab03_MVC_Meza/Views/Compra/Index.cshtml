@@ -1,0 +1,20 @@
+﻿@model Lab03_MVC_Meza.Models.ClsCompra
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <center>
+        <h1>Compra aleatoria</h1>
+        <br />
+        @using (Html.BeginForm("CalcularCompra", "Compra", FormMethod.Post))
+            {
+                <p>
+                    @Html.LabelFor(model => model.monto, "Ingrese el Monto de Compra: ")
+                    @Html.EditorFor(model=>model.monto)<br />
+                </p>
+                <input type="submit" value="Calcular" class="btn btn-warning"/>
+            }
+    </center>
+</div>
+
